@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)file:///C:/Users/mikae/Downloads/logo.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=1920">
+<title>The Siosons</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: #e8e8ec;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* shows full video, no cropping */
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<video src="logo.mov" autoplay="" loop="" muted="" playsinline="" preload="auto"></video>
+
+<script>
+  const video = document.querySelector('video');
+
+  // Auto-enter fullscreen on first click
+  document.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    }
+  }, { once: true });
+
+  // F key toggles fullscreen
+  document.addEventListener('keydown', e => {
+    if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+  });
+
+  // Ensure autoplay resumes if browser paused it
+  document.addEventListener('click', () => {
+    if (video.paused) video.play();
+  });
+</script>
+
+
+
+</body></html>
